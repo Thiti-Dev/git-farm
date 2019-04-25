@@ -24,7 +24,7 @@ function App() {
       <Router>
         <div className="App">
           {/* <NavigationBar /> */}
-          <Route exact path="/" component={Landing} />>
+          <Route exact path="/" component={Landing} />
         </div>
       </Router>
     </Provider>
