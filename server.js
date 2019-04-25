@@ -4,6 +4,10 @@ const express = require('express');
 const app = express();
 const axios = require('axios')
 
+// ------------ route ---------------
+const operation = require('./routes/api/operation');
+// ---------------------------------
+
 const port = 5000;
 
 // @route       GET /
@@ -39,6 +43,10 @@ const getReposNow = async (username) => {
             console.log(error)
         })
 }
+
+
+//Use Routes
+app.use('/api/operation', operation);
 
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);

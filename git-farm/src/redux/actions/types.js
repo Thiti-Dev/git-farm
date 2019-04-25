@@ -1,0 +1,2 @@
+export const GET_GITHUB_REPO = 'GET_GUTHUB_REPO';
+export const RETRIEVE_REPO = 'RETRIEVE_REPO';
