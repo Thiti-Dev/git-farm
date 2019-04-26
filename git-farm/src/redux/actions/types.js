@@ -1,3 +1,4 @@
 export const FETCH_LOADING = 'FETCH_LOADING';
 export const RETRIEVE_REPO = 'RETRIEVE_REPO';
 export const EMPTY_REPOS = 'EMPTY_REPOS';
+export const GET_USER_INFO = 'GET_USER_INFO';

@@ -60,10 +60,11 @@ class Landing extends Component {
 
 
   render() {
-    const {fetchData , loading} = this.props.index
+    const { fetchData, loading, currentUserInfo} = this.props.index
 
     let renderContent;
     let dataFetched;
+    let beautifyInfo;
 
     if(loading){
       renderContent = (
@@ -71,12 +72,13 @@ class Landing extends Component {
           <div className="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style={{width: "50%"}}></div>
         </div>
       )
-    }else{
-      if (Object.keys(fetchData).length > 0) {
+    }else{ 
+      if (Object.keys(fetchData).length > 0 && Object.keys(currentUserInfo).length > 0) {
+
         //was fetched
         dataFetched = fetchData.map((repos, key) => (
           <div key={key} className="col-xs-12 col-sm-4">
-            <div className="card border-info mb-3" style={{ maxWidth: "18rem" }}>
+            <div className="card border-info mb-3" style={{ maxWidth: "18rem" ,margin:"auto" }}>
               <div className="card-header">Repository</div>
               <div className="card-body text-info">
                 <h5 className="card-title">{repos.name}</h5>
@@ -85,6 +87,25 @@ class Landing extends Component {
             </div>
           </div>
         ))
+
+        beautifyInfo = (
+          <div className="card mb-3 m-auto" style={{maxWidth: "540px"}}>
+            <div className="row no-gutters">
+              <div className="col-md-4">
+                <img src={currentUserInfo.avatar_url} className="card-img" alt="..."/>
+              </div>
+                <div className="col-md-8">
+                  <div className="card-body">
+                  <h5 className="card-title text-center">{currentUserInfo.name}</h5>
+                    <p className="card-text">{currentUserInfo.bio}</p>
+                    <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+        )
+
+
 
         renderContent = (
           <div>
@@ -96,7 +117,8 @@ class Landing extends Component {
                 If you want to go and looking for another people's repos <button onClick={this.onBackToSearch.bind(this)} type="button" className="btn btn-info">CLICK HERE!</button>
                   </p>
             </div>
-            <div className="row">
+            {beautifyInfo}
+            <div className="row mt-5">
               {dataFetched}
             </div>
             </div>

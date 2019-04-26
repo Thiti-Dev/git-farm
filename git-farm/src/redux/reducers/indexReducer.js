@@ -1,9 +1,10 @@
 import isEmpty from '../../validation/is-empty'
-import { RETRIEVE_REPO, FETCH_LOADING, EMPTY_REPOS } from '../actions/types';
+import { RETRIEVE_REPO, FETCH_LOADING, EMPTY_REPOS, GET_USER_INFO } from '../actions/types';
 
 const initialState = {
     isWork: "yes",
     fetchData: {},
+    currentUserInfo: {},
     loading: false
 }
 
@@ -12,7 +13,13 @@ export default function(state = initialState, action){
         case RETRIEVE_REPO:
             return {
                 ...state,
-                fetchData: action.payload,
+                fetchData: action.payload
+            }
+
+        case GET_USER_INFO:
+            return{
+                ...state,
+                currentUserInfo: action.payload,
                 loading: false
             }
 
