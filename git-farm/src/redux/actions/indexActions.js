@@ -1,9 +1,10 @@
 import axios from 'axios'
-import { GET_GITHUB_REPO, RETRIEVE_REPO } from './types';
+import { GET_GITHUB_REPO, RETRIEVE_REPO, FETCH_LOADING, EMPTY_REPOS } from './types';
 
 
 // Fetch Github Repos
 export const fetchRepos = (githubData) => dispatch => {
+    dispatch(setFetchLoading())
     axios.get(`https://api.github.com/users/${githubData.name}/repos`)
         .then(res => {
             dispatch({
@@ -14,4 +15,18 @@ export const fetchRepos = (githubData) => dispatch => {
         .catch(err => {
 
         })
+}
+
+//  Fetch loading
+export const setFetchLoading = () => {
+    return {
+        type: FETCH_LOADING
+    }
+}
+
+//  Fetch loading
+export const emptyRepos = () => {
+    return {
+        type: EMPTY_REPOS
+    }
 }

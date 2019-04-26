@@ -1,2 +1,3 @@
-export const GET_GITHUB_REPO = 'GET_GUTHUB_REPO';
+export const FETCH_LOADING = 'FETCH_LOADING';
 export const RETRIEVE_REPO = 'RETRIEVE_REPO';
+export const EMPTY_REPOS = 'EMPTY_REPOS';
